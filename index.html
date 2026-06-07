@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>AURUM — Elite Fitness</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23c9a84c%22>✦</text></svg>">
+<!--ـ Manifest -->
+  <link rel="manifest" href="manifest.json" />
+  
+  <meta name="theme-color" content="#0a0908" />
+  <!-- Google Fonts: Cormorant Garamond (luxury display) + DM Mono (data) + Jost (clean body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Mono:wght@400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ╔══════════════════════════════════════╗ -->
+  <!-- ║            APP SHELL                 ║ -->
+  <!-- ╚══════════════════════════════════════╝ -->
+  <div class="app-shell">
+
+    <!-- ─── HEADER ─── -->
+    <header class="app-header">
+      <div class="header-logo">
+        <span class="logo-mark">✦</span>
+        <span class="logo-text">AURUM</span>
+      </div>
+      <div class="header-meta">
+        <div class="header-date" id="js-date"></div>
+        <div class="header-tagline">ELITE FITNESS OS</div>
+      </div>
+    </header>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-tab="calculator">
+        <span class="nav-icon">◈</span>
+        <span class="nav-label">Calc</span>
+      </button>
+      <button class="nav-item" data-tab="dashboard">
+        <span class="nav-icon">◉</span>
+        <span class="nav-label">Today</span>
+      </button>
+      <button class="nav-item" data-tab="nutrition">
+        <span class="nav-icon">◎</span>
+        <span class="nav-label">Food</span>
+      </button>
+      <button class="nav-item" data-tab="workout">
+        <span class="nav-icon">⊕</span>
+        <span class="nav-label">Lift</span>
+      </button>
+    </nav>
+
+    <!-- ─── PAGE CONTAINER ─── -->
+    <main class="page-container">
+
+      <!-- ══════════════════════════════════
+           TAB 1 · CALCULATOR
+      ══════════════════════════════════ -->
+      <section class="tab-page active" id="tab-calculator">
+
+        <div class="page-heading">
+          <span class="page-eyebrow">Mifflin-St Jeor · 1990</span>
+          <h1 class="page-title">Body Metrics</h1>
+        </div>
+
+        <!-- Bio Inputs -->
+        <div class="card">
+          <div class="card-label">Biometric Profile</div>
+          <div class="input-grid-2">
+            <div class="field">
+              <label class="field-label" for="inp-age">Age</label>
+              <div class="input-wrap">
+                <input type="number" id="inp-age" class="field-input" placeholder="28" min="13" max="99" />
+                <span class="input-unit">yrs</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="inp-weight">Weight</label>
+              <div class="input-wrap">
+                <input type="number" id="inp-weight" class="field-input" placeholder="80" min="30" max="300" step="0.1" />
+                <span class="input-unit">kg</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="inp-height">Height</label>
+              <div class="input-wrap">
+                <input type="number" id="inp-height" class="field-input" placeholder="178" min="100" max="250" />
+                <span class="input-unit">cm</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="inp-sex">Sex</label>
+              <div class="input-wrap select-wrap">
+                <select id="inp-sex" class="field-input">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Level -->
+        <div class="card">
+          <div class="card-label">Activity Level</div>
+          <div class="pill-group" id="activity-group">
+            <button class="pill active" data-val="1.2">Sedentary</button>
+            <button class="pill" data-val="1.375">Light</button>
+            <button class="pill" data-val="1.55">Moderate</button>
+            <button class="pill" data-val="1.725">Active</button>
+            <button class="pill" data-val="1.9">Athletic</button>
+          </div>
+          <p class="card-footnote">1.2 · 1.375 · 1.55 · 1.725 · 1.9 — Harris-Benedict multipliers</p>
+        </div>
+
+        <!-- Goal -->
+        <div class="card">
+          <div class="card-label">Training Goal</div>
+          <div class="goal-group" id="goal-group">
+            <button class="goal-btn active" data-val="bulk">
+              <span class="goal-icon">↑</span>
+              <span class="goal-name">Bulk</span>
+              <span class="goal-sub">+250 kcal</span>
+            </button>
+            <button class="goal-btn" data-val="maintain">
+              <span class="goal-icon">—</span>
+              <span class="goal-name">Maintain</span>
+              <span class="goal-sub">TDEE</span>
+            </button>
+            <button class="goal-btn" data-val="cut">
+              <span class="goal-icon">↓</span>
+              <span class="goal-name">Cut</span>
+              <span class="goal-sub">−500 kcal</span>
+            </button>
+          </div>
+        </div>
+
+        <button class="cta-btn" id="btn-calculate">Calculate My Targets</button>
+
+        <!-- Results (hidden until calculated) -->
+        <div class="results-panel" id="results-panel">
+
+          <div class="results-header">
+            <span class="page-eyebrow">Your Results</span>
+            <div class="goal-badge" id="result-goal-badge"></div>
+          </div>
+
+          <div class="metric-trio">
+            <div class="metric-cell">
+              <div class="metric-value" id="res-bmr">—</div>
+              <div class="metric-key">BMR</div>
+              <div class="metric-unit">kcal/day</div>
+            </div>
+            <div class="metric-cell highlight">
+              <div class="metric-value" id="res-tdee">—</div>
+              <div class="metric-key">TDEE</div>
+              <div class="metric-unit">kcal/day</div>
+            </div>
+            <div class="metric-cell">
+              <div class="metric-value" id="res-target">—</div>
+              <div class="metric-key">Target</div>
+              <div class="metric-unit">kcal/day</div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top: 1.4rem;">
+            <div class="card-label">Daily Macros</div>
+
+            <div class="macro-row">
+              <span class="macro-name protein-color">Protein</span>
+              <div class="macro-track"><div class="macro-bar protein-bar" id="bar-protein"></div></div>
+              <span class="macro-grams" id="val-protein">—</span>
+            </div>
+            <div class="macro-row">
+              <span class="macro-name fat-color">Fat</span>
+              <div class="macro-track"><div class="macro-bar fat-bar" id="bar-fat"></div></div>
+              <span class="macro-grams" id="val-fat">—</span>
+            </div>
+            <div class="macro-row">
+              <span class="macro-name carb-color">Carbs</span>
+              <div class="macro-track"><div class="macro-bar carb-bar" id="bar-carbs"></div></div>
+              <span class="macro-grams" id="val-carbs">—</span>
+            </div>
+
+            <p class="card-footnote" id="macro-formula-note"></p>
+          </div>
+
+          <button class="cta-btn secondary" id="btn-save-targets">✦ Save Targets to Dashboard</button>
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════════
+           TAB 2 · DASHBOARD
+      ══════════════════════════════════ -->
+      <section class="tab-page" id="tab-dashboard">
+
+        <div class="page-heading">
+          <span class="page-eyebrow" id="dash-date-label">Today</span>
+          <h1 class="page-title">Dashboard</h1>
+        </div>
+
+        <!-- No-targets state -->
+        <div class="empty-state" id="dash-empty">
+          <div class="empty-icon">◈</div>
+          <p class="empty-msg">No targets set yet.<br/>Visit the <strong>Calc</strong> tab first.</p>
+        </div>
+
+        <!-- Dashboard content (shown once targets exist) -->
+        <div id="dash-main" style="display:none">
+
+          <!-- Calorie Ring -->
+          <div class="card ring-card">
+            <div class="card-label">Daily Calories</div>
+            <div class="ring-container">
+              <svg class="ring-svg" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="ring-track" cx="80" cy="80" r="66"/>
+                <circle class="ring-fill" id="ring-fill" cx="80" cy="80" r="66"
+                  stroke-dasharray="414.69"
+                  stroke-dashoffset="414.69"
+                  transform="rotate(-90 80 80)"/>
+              </svg>
+              <div class="ring-inner">
+                <div class="ring-consumed" id="ring-consumed">0</div>
+                <div class="ring-of" id="ring-of">of — kcal</div>
+                <div class="ring-remaining" id="ring-remaining">— remaining</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Protein Progress -->
+          <div class="card">
+            <div class="card-label">Protein Progress</div>
+            <div class="progress-stat">
+              <span class="progress-current protein-color" id="dash-prot-cur">0g</span>
+              <span class="progress-sep">/</span>
+              <span class="progress-target" id="dash-prot-tgt">—g</span>
+            </div>
+            <div class="fat-track">
+              <div class="fat-fill protein-fill" id="dash-prot-bar" style="width:0%"></div>
+            </div>
+          </div>
+
+          <!-- Macro Overview Row -->
+          <div class="mini-stat-row">
+            <div class="mini-stat">
+              <div class="mini-val fat-color" id="dash-fat-cur">0g</div>
+              <div class="mini-key">Fat <span class="mini-tgt" id="dash-fat-tgt"></span></div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-val carb-color" id="dash-carb-cur">0g</div>
+              <div class="mini-key">Carbs <span class="mini-tgt" id="dash-carb-tgt"></span></div>
+            </div>
+          </div>
+
+          <!-- Daily Checklist -->
+          <div class="card">
+            <div class="card-label">Daily Protocol</div>
+            <div class="checklist" id="checklist-items">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <!-- Water Tracker -->
+          <div class="card">
+            <div class="card-label">Hydration</div>
+            <div class="water-header">
+              <span class="water-count"><span id="water-num">0</span> / 8 glasses</span>
+              <button class="ghost-btn" id="water-reset">Reset</button>
+            </div>
+            <div class="water-grid" id="water-cups">
+              <!-- Injected by JS -->
+            </div>
+            <p class="card-footnote">Each glass ≈ 250 ml · Daily target: 2,000 ml</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════════
+           TAB 3 · NUTRITION LOG
+      ══════════════════════════════════ -->
+      <section class="tab-page" id="tab-nutrition">
+
+        <div class="page-heading">
+          <span class="page-eyebrow">Daily Intake</span>
+          <h1 class="page-title">Food Log</h1>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Log a Meal</div>
+          <div class="field" style="margin-bottom: 1rem;">
+            <label class="field-label" for="food-name">Meal / Food Name</label>
+            <div class="input-wrap">
+              <input type="text" id="food-name" class="field-input" placeholder="e.g. Chicken Breast 150g" />
+            </div>
+          </div>
+          <div class="input-grid-2">
+            <div class="field">
+              <label class="field-label" for="food-cal">Calories</label>
+              <div class="input-wrap">
+                <input type="number" id="food-cal" class="field-input" placeholder="0" min="0" />
+                <span class="input-unit">kcal</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="food-prot">Protein</label>
+              <div class="input-wrap">
+                <input type="number" id="food-prot" class="field-input" placeholder="0" min="0" step="0.1" />
+                <span class="input-unit">g</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="food-fat">Fat</label>
+              <div class="input-wrap">
+                <input type="number" id="food-fat" class="field-input" placeholder="0" min="0" step="0.1" />
+                <span class="input-unit">g</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="food-carb">Carbs</label>
+              <div class="input-wrap">
+                <input type="number" id="food-carb" class="field-input" placeholder="0" min="0" step="0.1" />
+                <span class="input-unit">g</span>
+              </div>
+            </div>
+          </div>
+          <button class="cta-btn" id="btn-add-food" style="margin-top: 1.2rem;">Add to Log</button>
+        </div>
+
+        <!-- Today's Log -->
+        <div class="card">
+          <div class="card-label">Today's Log</div>
+          <div id="food-list">
+            <div class="empty-state small" id="food-empty">
+              <p class="empty-msg">No meals logged today.</p>
+            </div>
+          </div>
+          <!-- Totals row -->
+          <div class="totals-row" id="food-totals" style="display:none">
+            <div class="total-cell">
+              <div class="total-val" id="tot-cal">0</div>
+              <div class="total-key">kcal</div>
+            </div>
+            <div class="total-cell">
+              <div class="total-val protein-color" id="tot-prot">0g</div>
+              <div class="total-key">protein</div>
+            </div>
+            <div class="total-cell">
+              <div class="total-val fat-color" id="tot-fat">0g</div>
+              <div class="total-key">fat</div>
+            </div>
+            <div class="total-cell">
+              <div class="total-val carb-color" id="tot-carb">0g</div>
+              <div class="total-key">carbs</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════════
+           TAB 4 · WORKOUT TRACKER
+      ══════════════════════════════════ -->
+      <section class="tab-page" id="tab-workout">
+
+        <div class="page-heading">
+          <span class="page-eyebrow">Progressive Overload</span>
+          <h1 class="page-title">Lift Log</h1>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Log Exercise</div>
+          <div class="field" style="margin-bottom: 1rem;">
+            <label class="field-label" for="ex-name">Exercise Name</label>
+            <div class="input-wrap">
+              <input type="text" id="ex-name" class="field-input" placeholder="e.g. Barbell Bench Press" />
+            </div>
+          </div>
+          <div class="input-grid-4">
+            <div class="field">
+              <label class="field-label" for="ex-weight">Weight</label>
+              <div class="input-wrap">
+                <input type="number" id="ex-weight" class="field-input" placeholder="100" min="0" step="0.5" />
+                <span class="input-unit">kg</span>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="ex-sets">Sets</label>
+              <div class="input-wrap">
+                <input type="number" id="ex-sets" class="field-input" placeholder="4" min="1" max="20" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="ex-reps">Reps</label>
+              <div class="input-wrap">
+                <input type="number" id="ex-reps" class="field-input" placeholder="8" min="1" max="100" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="ex-rpe">RPE</label>
+              <div class="input-wrap">
+                <input type="number" id="ex-rpe" class="field-input" placeholder="8" min="1" max="10" step="0.5" />
+              </div>
+            </div>
+          </div>
+          <div class="field" style="margin-top:1rem">
+            <label class="field-label" for="ex-notes">Notes (optional)</label>
+            <div class="input-wrap">
+              <input type="text" id="ex-notes" class="field-input" placeholder="Tempo, pauses, grip width..." />
+            </div>
+          </div>
+          <button class="cta-btn" id="btn-add-workout" style="margin-top: 1.2rem;">Log This Lift</button>
+        </div>
+
+        <!-- Workout History -->
+        <div class="card">
+          <div class="card-head-row">
+            <div class="card-label">History</div>
+            <button class="ghost-btn danger" id="btn-clear-lifts">Clear All</button>
+          </div>
+          <div id="workout-list">
+            <div class="empty-state small" id="workout-empty">
+              <p class="empty-msg">No lifts logged yet.<br/>Start tracking to see progression.</p>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ══════════════════════════════════
+           INFO / DEVELOPER FOOTER
+      ══════════════════════════════════ -->
+      <footer class="info-footer">
+
+        <!-- Decorative top glow thread -->
+        <div class="footer-glow-line"></div>
+
+        <!-- ─── ABOUT ─── -->
+        <div class="footer-section">
+          <div class="footer-eyebrow">
+            <span class="footer-eyebrow-dash"></span>
+            Vision
+          </div>
+          <div class="footer-logo-row">
+            <span class="footer-logo-mark">✦</span>
+            <span class="footer-logo-text">AURUM</span>
+          </div>
+          <p class="footer-about-text">
+            AURUM was conceived at the intersection of precision engineering and human potential — where 22-karat design philosophy meets the rigorous science of physical transformation. We hold that the instruments of discipline should reflect the calibre of the athlete wielding them: meticulously crafted, uncompromising in quality, and built to serve the serious practitioner. Every module is anchored in validated methodology — from Mifflin-St Jeor metabolic modelling and Harris-Benedict activity stratification, to granular progressive overload notation that honours the principle of continuous adaptation. AURUM does not simplify. It clarifies. This is not a fitness application. It is an operating system for those who train with absolute intent.
+          </p>
+        </div>
+
+        <div class="footer-inner-divider"></div>
+
+        <!-- ─── DEVELOPER ─── -->
+        <div class="footer-section">
+          <div class="footer-eyebrow">
+            <span class="footer-eyebrow-dash"></span>
+            Architect
+          </div>
+          <div class="footer-dev-card">
+            <div class="footer-dev-avatar">M·E</div>
+            <div class="footer-dev-info">
+              <div class="footer-dev-name">Mahmoud Emad</div>
+              <div class="footer-dev-role">Lead Developer &amp; Designer</div>
+            </div>
+            <div class="footer-dev-mark">✦</div>
+          </div>
+        </div>
+
+        <div class="footer-inner-divider"></div>
+
+        <!-- ─── CONNECT ─── -->
+        <div class="footer-section">
+          <div class="footer-eyebrow">
+            <span class="footer-eyebrow-dash"></span>
+            Connect
+          </div>
+          <div class="footer-links-grid">
+
+            <!-- LinkedIn -->
+            <a class="footer-link-btn linkedin"
+               href="https://www.linkedin.com/in/mahmoud-emad-7110013b3?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android"
+               target="_blank" rel="noopener noreferrer">
+              <span class="link-btn-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </span>
+              <span class="link-btn-label">LinkedIn</span>
+              <span class="link-btn-arrow">→</span>
+            </a>
+
+            <!-- GitHub -->
+            <a class="footer-link-btn github"
+               href="https://github.com/mahmouemad"
+               target="_blank" rel="noopener noreferrer">
+              <span class="link-btn-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+              </span>
+              <span class="link-btn-label">GitHub</span>
+              <span class="link-btn-arrow">→</span>
+            </a>
+
+            <!-- Facebook -->
+            <a class="footer-link-btn facebook"
+               href="https://www.facebook.com/share/1D8w7AvVNX/"
+               target="_blank" rel="noopener noreferrer">
+              <span class="link-btn-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </span>
+              <span class="link-btn-label">Facebook</span>
+              <span class="link-btn-arrow">→</span>
+            </a>
+
+            <!-- WhatsApp -->
+            <a class="footer-link-btn whatsapp"
+               href="https://wa.me/201032925031"
+               target="_blank" rel="noopener noreferrer">
+              <span class="link-btn-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+              </span>
+              <span class="link-btn-label">WhatsApp</span>
+              <span class="link-btn-arrow">→</span>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- ─── COPYRIGHT ─── -->
+        <div class="footer-bottom">
+          <div class="footer-bottom-inner">
+            <span class="footer-mark">✦</span>
+            <span class="footer-bottom-logo">AURUM</span>
+          </div>
+          <span class="footer-copyright-text">© 2025 Aurum Elite Fitness · All Rights Reserved</span>
+          <span class="footer-copyright-text">Precision-crafted by Mahmoud Emad</span>
+        </div>
+
+      </footer>
+
+    </main><!-- /page-container -->
+  </div><!-- /app-shell -->
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Main JavaScript (deferred) -->
+  <script src="script.js"></script>
+</body>
+</html>
