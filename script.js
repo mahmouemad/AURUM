@@ -919,3 +919,13 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.log('SW Error: ', err));
   });
 }
+
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register('./sw.js', { scope: './' })
+        .then((reg) => console.log('[AURUM] SW registered. Scope:', reg.scope))
+        .catch((err) => console.error('[AURUM] SW registration failed:', err));
+    });
+  }

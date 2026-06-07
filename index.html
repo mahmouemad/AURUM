@@ -7,7 +7,21 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23c9a84c%22>✦</text></svg>">
 <!--ـ Manifest -->
   <link rel="manifest" href="manifest.json" />
-  
+  <!-- ── Place inside <head> ───────────────────────────────────── -->
+
+<!-- PWA manifest — Chrome reads this to trigger the install prompt -->
+<link rel="manifest" href="./manifest.json">
+
+<!-- Matches theme_color in the manifest — tints the browser chrome bar -->
+<meta name="theme-color" content="#0a0908">
+
+<!-- Android Chrome standalone hints -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- iOS Safari standalone hints (no install prompt, but improves experience) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AURUM">
   <meta name="theme-color" content="#0a0908" />
   <!-- Google Fonts: Cormorant Garamond (luxury display) + DM Mono (data) + Jost (clean body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
